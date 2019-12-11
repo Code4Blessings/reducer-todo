@@ -5,5 +5,8 @@ export const initialState = {
 }
 
 export const reducer = (state, action) => {
-    return { default: state }
+    switch(action.type) {
+      default:
+        return state;
+    }
 }
