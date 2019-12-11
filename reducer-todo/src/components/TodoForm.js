@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
 
 
-const TodoForm = () => {
+const TodoForm = (props) => {
     const [newTodo, setNewTodo] = useState("");
 
     const handleChange = event => {
-        setNewTodo({ 
-            newTodo: event.target.value 
-        });
+        setNewTodo(
+            event.target.value 
+        );
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         props.addToDo(newTodo);
-        setNewTodo({
-            newTodo: ""
-        })
+        setNewTodo("")
     }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit} >
              <label htmlFor="task">Task:
                    <input 
                    type="text" 
