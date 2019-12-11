@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
+import { reducer, initialState } from './reducers/todoReducer'
 import './App.css';
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const ADD_TODO = 'ADD_TODO';
+  const [state, dispatch] = useReducer(initialState, reducer)
+  console.log(state)
+  //const [todos, setTodos] = useState([]);
 
   const addToDo = task => {
     const newToDo = {
@@ -12,30 +16,15 @@ function App() {
       id: Date.now(),
       completed: false
     }
-    setTodos(
-      [...todos, newToDo]
-    );
+    dispatch({type: ADD_TODO, payload: newToDo});
   }
 
   const toggleComplete = id => {
-    setTodos(
-      todos.map(task => {
-        if (task.id === id) {
-          return {
-            ...task,
-            completed: !task.completed
-          };
-        } else {
-          return task;
-        }
-      })
-    );
+    dispatch({ type: 'COMPLETED_TODO', payload: id});
   }
 
   const clearCompleted = () => {
-    setTodos(
-      todos.filter(task => !task.completed)
-    )
+    dispatch({ type: "CLEAR_COMPLETED_TODO"})
   }
 
   return (
@@ -46,7 +35,7 @@ function App() {
             addToDo={addToDo} />
         </div>
         <TodoList 
-        todos={todos} 
+        state={state} 
         toggleComplete={toggleComplete} 
         clearCompleted={clearCompleted} />
     </div>

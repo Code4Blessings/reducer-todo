@@ -13,7 +13,7 @@ const TodoForm = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         props.addToDo(newTodo);
-        setNewTodo("")
+        setNewTodo('')
     }
 
     return (

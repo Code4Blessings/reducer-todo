@@ -3,10 +3,11 @@ import Todo from './Todo';
 import './Todo.css';
 
 const TodoList = props => {
+    console.log(props)
     return (
         <div className="todo-list">
-            {props.todos.map(todo => (
-                <Todo 
+            {props.state.map(todo => (
+                 <Todo 
                     key={todo.id} 
                     todo={todo}
                     completed={todo.completed}
