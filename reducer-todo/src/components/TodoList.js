@@ -3,7 +3,7 @@ import Todo from './Todo';
 import './Todo.css';
 
 const TodoList = props => {
-    console.log(props)
+    console.log('Looking for bug', props)
     return (
         <div className="todo-list">
             {props.state.map(todo => (
@@ -16,7 +16,7 @@ const TodoList = props => {
             ))}
              <button onClick={() => props.clearCompleted()}>Clear Completed Todo</button>
         </div>
-    )
+    );
 }
 
 export default TodoList;

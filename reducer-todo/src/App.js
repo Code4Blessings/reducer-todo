@@ -6,9 +6,9 @@ import './App.css';
 
 function App() {
   const ADD_TODO = 'ADD_TODO';
-  const [state, dispatch] = useReducer(initialState, reducer)
+  const [state, dispatch] = useReducer(reducer, initialState)
   console.log(state)
-  //const [todos, setTodos] = useState([]);
+  
 
   const addToDo = task => {
     const newToDo = {
@@ -31,8 +31,10 @@ function App() {
     <div className="App">
        <div className="header">
            <h2>Welcome To Your Todo App!</h2>
+
             <TodoForm 
             addToDo={addToDo} />
+            
         </div>
         <TodoList 
         state={state} 

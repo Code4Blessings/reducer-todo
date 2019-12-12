@@ -1,5 +1,5 @@
 export const initialState = [
-  {task: 'Learn about reducers',
+  {task: '',
   completed: false,
   id: 3892987589}
 ]
@@ -22,7 +22,7 @@ export const reducer = (state, action) => {
               }
             })
         case "CLEAR_COMPLETED_TODO":
-            state.filter(task => !task.completed)
+            return state.filter(task => !task.completed)
 
         default:
           return state;
